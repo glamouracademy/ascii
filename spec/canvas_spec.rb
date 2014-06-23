@@ -31,8 +31,13 @@ grid
     expect { canvas.plot }.not_to raise_error
   end
 
-  it "should give an error if a nonpositive integer is given for creating a canvas" do
+  it "should give an error if a nonpositive integer is given for the width in creating a canvas" do
     canvas = Canvas.new("C -20 4")
+    expect {canvas.plot }.to raise_error("Sorry only positive numbers are accepted. Please try again.")
+  end
+
+  it "should give an error if a nonpositive integer is given for the height in creating a canvas" do
+    canvas = Canvas.new("C 20 0")
     expect {canvas.plot }.to raise_error("Sorry only positive numbers are accepted. Please try again.")
   end
 end
