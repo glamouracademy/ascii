@@ -1,4 +1,3 @@
-require 'draw'
 require 'canvas'
 
 describe Canvas do
