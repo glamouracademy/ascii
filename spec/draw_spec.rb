@@ -8,15 +8,22 @@ describe Canvas do
     expect(canvas.command).to eq("C 20 4")
   end
 
-  it "should get a canvas command" do
-    subject.stub!(:gets) {"C 20 4"}
-    STDOUT.should_receive(:puts).with(canvas_command)
-    expect(canvas_command.).to eq("C 20 4")
-  end
-
   it "should get plot a canvas command" do
-
+    canvas = Canvas.new("C 20 4")
+    grid = canvas.plot 
+    expect(grid).to eq(<<grid
+----------------------
+|                    |
+|                    |
+|                    |
+|                    |
+----------------------
+grid
+)
   end
+
+
+
 
   it "should give an error if the incorrect command is given for creating a canvas" do
     
