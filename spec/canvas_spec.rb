@@ -6,7 +6,7 @@ describe Canvas do
     expect(canvas.command).to eq("C 20 4")
   end
 
-  it "should get plot a canvas command" do
+  it "should plot a canvas command" do
     canvas = Canvas.new("C 20 4")
     grid = canvas.plot 
     expect(grid).to eq(<<grid
@@ -40,42 +40,3 @@ grid
     expect {canvas.plot }.to raise_error("Sorry only positive numbers are accepted. Please try again.")
   end
 end
-
-# describe Quit do
-#   it "should return a quit command that is passed to it" do
-    
-#   end
-
-#   it "should quit the application when the command is given" do
-    
-#   end
-
-#   it "should give an error if the incorrect command is given for quitting" do
-    
-#   end
-# end
-
-
-# describe Draw do
-#   it "should draw a line when given beginning and ending coordinates" do
-#   end
-
-#   it "should draw a rectangle when given an upper left corner and lower right corner coordinates" do
-#   end
-
-#   it "should draw fill a rectangular area when given coordinates" do
-#   end
-
-#   it "should give an error if the incorrect command is given for drawing a line" do
-  
-#   end
-
-#   it "should give an error if the incorrect command is given for drawing a rectangle" do
-  
-#   end
-
-#   it "should give an error if the incorrect command is given for filling an area" do
-  
-#   end
-
-# end
