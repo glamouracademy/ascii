@@ -1,6 +1,6 @@
 require 'draw'
 
-describe Line do 
+describe Draw do 
   it "should return a line command that is passed to it" do
     line = Line.new("L 1 2 6 2")
     expect(line.command).to eq("L 1 2 6 2")

@@ -8,16 +8,40 @@ describe Canvas do
 
   it "should plot a canvas command" do
     canvas = Canvas.new("C 20 4")
-    grid = canvas.plot 
-    expect(grid).to eq(<<grid
+    border = canvas.plot 
+    expect(border).to eq(<<border
 ----------------------
 |                    |
 |                    |
 |                    |
 |                    |
 ----------------------
-grid
+border
 )
+  end
+
+  it "should have row coordinates" do
+    canvas = Canvas.new("C 20 4")
+    canvas_rows = canvas.row_coordinates
+    expect(canvas_rows).to eq(4)
+  end
+
+  it "should have column coordinates" do
+    canvas = Canvas.new("C 20 4")
+    canvas_columns = canvas.column_coordinates
+    expect(canvas_columns).to eq(20)
+  end
+
+  it "should return arrays when given a command" do
+    canvas = Canvas.new("C 1 1")
+    grid_array = canvas.to_a
+    expect(grid_array).to eq [["0,0", "0,1", "0,2"],["1,0", "1,1", "1,2"],["2,0", "2,1", "2,2"]] 
+  end
+
+  it "returns ' ' for cells that don't have content" do
+    canvas = Canvas.new("C 3 3")
+    coordinate = canvas.get_coordinate(2,2)
+    expect(coordinate).to eq(" ")  
   end
 
   it "should give an error if the incorrect letter is given for creating a canvas" do

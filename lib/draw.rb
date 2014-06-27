@@ -1,6 +1,6 @@
 require_relative 'canvas'
 
-class Line
+class Draw
   def initialize(line)
     @line = line
   end
@@ -20,8 +20,10 @@ class Line
     horizontal = y2 - y1
     vertical = x2 - x1
 
-    # plotted_canvas #can I get this from canvas.rb
-    # start =   
+    plotted_canvas #can I get this from canvas.rb
+    
+    
+
 
     if horizontal == 0
       'x' * vertical + "\n"
