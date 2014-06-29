@@ -23,7 +23,7 @@ class Canvas
     end
 
     unless @y_coordinates.integer? && @y_coordinates > 0
-      raise "Sorry only positive numbers are accepted for the y coordinates. Please try again."
+      raise "Sorry only positive numbers are accepted for the y coordinate. Please try again."
     end
     @canvas
   end
@@ -67,6 +67,18 @@ class Canvas
       a[0] = "-"
       a[-1] = "-"
     end
-    @grid_coordinates
+    
+    grid_output = ""
+    
+    num_rows = @grid_coordinates[0].size
+
+    num_rows.times do |i|  
+      r = ""
+      @grid_coordinates.each do |a|
+        r << a[i]
+      end
+      grid_output << r << "\n"
+    end 
+    grid_output
   end
 end
