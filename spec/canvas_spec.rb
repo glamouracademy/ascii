@@ -3,7 +3,7 @@ require 'canvas'
 describe Canvas do
   it "should return a canvas command that is passed to it" do
     canvas = Canvas.new("C 20 4")
-    expect(canvas.command).to eq("C 20 4")
+    expect(canvas.parse_command).to eq("C 20 4")
   end
 
   it "should plot a canvas command" do
@@ -34,14 +34,14 @@ border
 
   it "should return arrays when given a command" do
     canvas = Canvas.new("C 1 1")
-    grid_array = canvas.to_a
+    grid_array = canvas.setup_grid
     expect(grid_array).to eq [["0,0", "0,1", "0,2"],["1,0", "1,1", "1,2"],["2,0", "2,1", "2,2"]] 
   end
 
-  it "returns ' ' for cells that don't have content" do
+  it "returns the real coordinate for a cell" do
     canvas = Canvas.new("C 3 3")
     coordinate = canvas.get_coordinate(2,2)
-    expect(coordinate).to eq(" ")  
+    expect(coordinate).to eq("4,4")  
   end
 
   it "should give an error if the incorrect letter is given for creating a canvas" do

@@ -1,18 +1,35 @@
+require 'pry'
+
 class Canvas
 attr_reader :row_coordinates, :column_coordinates
 
   def initialize(canvas)
     @canvas = canvas
-    input_array = command.split(' ')
-    @row_coordinates = input_array[2].to_i
-    @column_coordinates = input_array[1].to_i
+    parse_command
+    setup_grid
   end
 
-  def command
+  def parse_command
     @canvas
+    input_array = @canvas.split(' ')
+    @canvas_object = input_array[0].upcase
+    @y_coordinates = input_array[2].to_i
+    @x_coordinates = input_array[1].to_i
+    
+    if @canvas_object!= 'C'
+      raise "Sorry I don't recognize that command. Please try again."
+    end
+
+    unless @x_coordinates.integer? && @x_coordinates > 0
+      raise "Sorry only positive numbers are accepted for the x coordinate. Please try again."
+    end
+
+    unless @y_coordinates.integer? && @y_coordinates > 0
+      raise "Sorry only positive numbers are accepted for the y coordinates. Please try again."
+    end
   end
 
-  def to_a
+  def setup_grid
     grid_rows = []
     grid_columns = []
     grid_coordinates = []
@@ -34,35 +51,18 @@ attr_reader :row_coordinates, :column_coordinates
       c.join(",")
     end
 
-    grid_coordinates = grid_coordinates.group_by { |x| x.chr }.values
-
-    grid_coordinates
-
+    @grid_coordinates = grid_coordinates.group_by { |x| x.chr }.values
   end
 
   def get_coordinate(x,y)
     @canvas
+    requested_x = x+2
+    requested_y = y+2
+    requested_coordinate = @grid_coordinates[requested_x][requested_y]
   end
 
   def plot
-    input_array = command.split(' ')
-    canvas_object = input_array[0].upcase
-
-    if canvas_object!= 'C'
-      raise "Sorry I don't recognize that command. Please try again."
-    end
-
-    width = input_array[1].to_i
-    canvas_height = input_array[2].to_i
-
-    unless width.integer? && width > 0
-      raise "Sorry only positive numbers are accepted. Please try again."
-    end
-
-    unless canvas_height.integer? && canvas_height > 0
-      raise "Sorry only positive numbers are accepted. Please try again."
-    end
-
+    
     canvas_width = width + 2
     plotted_canvas_width = '-' * canvas_width + "\n"
 
