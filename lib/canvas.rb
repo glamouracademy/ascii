@@ -1,7 +1,6 @@
 require 'pry'
 
 class Canvas
-attr_reader :row_coordinates, :column_coordinates
 
   def initialize(canvas)
     @canvas = canvas
@@ -10,7 +9,6 @@ attr_reader :row_coordinates, :column_coordinates
   end
 
   def parse_command
-    @canvas
     input_array = @canvas.split(' ')
     @canvas_object = input_array[0].upcase
     @y_coordinates = input_array[2].to_i
@@ -27,6 +25,7 @@ attr_reader :row_coordinates, :column_coordinates
     unless @y_coordinates.integer? && @y_coordinates > 0
       raise "Sorry only positive numbers are accepted for the y coordinates. Please try again."
     end
+    @canvas
   end
 
   def setup_grid
@@ -34,13 +33,12 @@ attr_reader :row_coordinates, :column_coordinates
     grid_columns = []
     grid_coordinates = []
 
-    rows = row_coordinates + 2
+    rows = @y_coordinates + 2
     rows.times do |n|
       grid_rows << n
     end
-    
 
-    columns = column_coordinates + 2
+    columns = @x_coordinates + 2
      columns.times do |n|
       grid_columns << n
     end
@@ -52,6 +50,8 @@ attr_reader :row_coordinates, :column_coordinates
     end
 
     @grid_coordinates = grid_coordinates.group_by { |x| x.chr }.values
+
+
   end
 
   def get_coordinate(x,y)
@@ -62,7 +62,7 @@ attr_reader :row_coordinates, :column_coordinates
   end
 
   def plot
-    
+
     canvas_width = width + 2
     plotted_canvas_width = '-' * canvas_width + "\n"
 
