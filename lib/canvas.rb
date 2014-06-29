@@ -33,12 +33,12 @@ class Canvas
     grid_columns = []
     grid_coordinates = []
 
-    rows = @y_coordinates + 2
+    rows = @x_coordinates + 2
     rows.times do |n|
       grid_rows << n
     end
 
-    columns = @x_coordinates + 2
+    columns = @y_coordinates + 2
      columns.times do |n|
       grid_columns << n
     end
@@ -49,9 +49,7 @@ class Canvas
       c.join(",")
     end
 
-    @grid_coordinates = grid_coordinates.group_by { |x| x.chr }.values
-
-
+    @grid_coordinates = grid_coordinates.group_by { |x| x.split(',').first }.values
   end
 
   def get_coordinate(x,y)
@@ -62,11 +60,13 @@ class Canvas
   end
 
   def plot
-
-    canvas_width = width + 2
-    plotted_canvas_width = '-' * canvas_width + "\n"
-
-    plotted_canvas = plotted_canvas_width + ('|'+ (' ' * width) + '|' + "\n") * canvas_height
-    plotted_canvas += plotted_canvas_width
+    @grid_coordinates.each { |a| a.fill " "}
+    @grid_coordinates[0].fill("|")
+    @grid_coordinates[-1].fill("|")
+    @grid_coordinates.each do |a|
+      a[0] = "-"
+      a[-1] = "-"
+    end
+    @grid_coordinates
   end
 end
