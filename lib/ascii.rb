@@ -7,13 +7,13 @@ puts "Hello #{name}. To start a new canvas, please type the letter 'C' followed 
 
 canvas_input = gets
 canvas_input = canvas_input.chomp
-canvas = Canvas.new(canvas_input)
 
 begin
+  canvas = Canvas.new(canvas_input)
   grid = canvas.plot
+  puts "Awesome!  Here's your canvas!" + "\n" + grid
 rescue => e
   puts e.message
 end
 
-puts "Awesome!  Here's your canvas!" + "\n" + grid
 

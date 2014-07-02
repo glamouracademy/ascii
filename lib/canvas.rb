@@ -60,6 +60,7 @@ class Canvas
   end
 
   def plot
+    # put the correct contents in the grid (-, |,  )
     @grid_coordinates.each { |a| a.fill " "}
     @grid_coordinates[0].fill("|")
     @grid_coordinates[-1].fill("|")
@@ -67,7 +68,8 @@ class Canvas
       a[0] = "-"
       a[-1] = "-"
     end
-    
+
+    # 'plotting' the grid to a string
     grid_output = ""
     
     num_rows = @grid_coordinates[0].size
