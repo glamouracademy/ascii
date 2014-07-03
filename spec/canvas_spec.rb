@@ -32,6 +32,12 @@ border
     expect(coordinate).to eq("4,4")  
   end
 
+  it "should replace the contents of a canvas coordinate with an 'x' for a line coordinate" do
+    canvas = Canvas.new("C 4 4")
+    canvas_coordinate = canvas.plot_line(2,1)
+    expect(canvas.get_coordinate(2,1)).to eq("x")
+  end
+
   it "should give an error if the incorrect letter is given for creating a canvas" do
     expect { Canvas.new("D 20 4") }.to raise_error("Sorry I don't recognize that command. Please try again.")
   end

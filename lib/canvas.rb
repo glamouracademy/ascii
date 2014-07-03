@@ -25,6 +25,7 @@ class Canvas
     unless @y_coordinates.integer? && @y_coordinates > 0
       raise "Sorry only positive numbers are accepted for the y coordinate. Please try again."
     end
+
     @canvas
   end
 
@@ -60,7 +61,7 @@ class Canvas
   end
 
   def plot
-    # put the correct contents in the grid (-, |,  )
+    # plotting the correct contents in the grid (-, |,  )
     @grid_coordinates.each { |a| a.fill " "}
     @grid_coordinates[0].fill("|")
     @grid_coordinates[-1].fill("|")
@@ -69,7 +70,7 @@ class Canvas
       a[-1] = "-"
     end
 
-    # 'plotting' the grid to a string
+    # outputting the current contents of the grid array to a string
     grid_output = ""
     
     num_rows = @grid_coordinates[0].size
@@ -83,4 +84,14 @@ class Canvas
     end 
     grid_output
   end
+
+  def plot_line(x,y)
+    requested_line_x = x + 2
+    requested_line_y = y + 2
+    @grid_coordinates[requested_line_x][requested_line_y] = "x"
+      
+  end
 end
+
+# @grid_coordinates = [["0,0","0,1","0,2"],["1,0","1,1","1,2"],["2,0","2,1","2,2"]]
+
