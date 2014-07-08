@@ -33,20 +33,22 @@ describe Line do
     expect(plotted_coordinate).to eq("x")
   end
 
-#   it "should plot a horizontal line within a canvas" do
-#     canvas = Canvas.new("C 20 4")
-#     line = Line.new("L 1 2 6 2")
-#     line = line.output
-#     expect(gridline).to eq(<<gridline
-# ----------------------
-# |                    |
-# |xxxxx               |
-# |                    |
-# |                    |
-# ----------------------  
-# gridline
-# )
-#   end
+  it "should plot a horizontal line within a canvas" do
+    canvas = Canvas.new("C 20 4")
+    line = Line.new("L 1 2 6 2")
+    canvas.plot
+    line.plot(canvas)
+    plotted_line = canvas.output
+    expect(plotted_line).to eq(<<gridline
+----------------------
+|                    |
+|xxxxxx              |
+|                    |
+|                    |
+----------------------
+gridline
+)
+  end
 
   it "should return an error if the line coordinates are outside the canvas" do
     canvas = Canvas.new("C 4 4")

@@ -61,13 +61,10 @@ class Canvas
 
   def get_coordinate(x,y)
     @canvas
-    requested_x = x+2
-    requested_y = y+2
-    requested_coordinate = @grid_coordinates[requested_x][requested_y]
+    requested_coordinate = @grid_coordinates[x][y]
   end
 
   def plot
-    # plotting the correct contents in the grid (-, |,  )
     @grid_coordinates.each { |a| a.fill " "}
     @grid_coordinates[0].fill("|")
     @grid_coordinates[-1].fill("|")
@@ -75,8 +72,10 @@ class Canvas
       a[0] = "-"
       a[-1] = "-"
     end
+  end
 
-    # outputting the current contents of the grid array to a string
+  def output
+    #plot
     grid_output = ""
     
     num_rows = @grid_coordinates[0].size
@@ -92,12 +91,8 @@ class Canvas
   end
 
   def plot_line(x,y)
-    requested_line_x = x + 2
-    requested_line_y = y + 2
-    @grid_coordinates[requested_line_x][requested_line_y] = "x"
-      
+    @grid_coordinates[x][y] = "x" 
   end
 end
 
-# @grid_coordinates = [["0,0","0,1","0,2"],["1,0","1,1","1,2"],["2,0","2,1","2,2"]]
 

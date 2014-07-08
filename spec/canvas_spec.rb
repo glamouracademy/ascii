@@ -8,7 +8,7 @@ describe Canvas do
 
   it "should plot a canvas command" do
     canvas = Canvas.new("C 20 4")
-    border = canvas.plot 
+    border = canvas.output 
     expect(border).to eq(<<border
 ----------------------
 |                    |
