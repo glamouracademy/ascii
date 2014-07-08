@@ -38,6 +38,13 @@ border
     expect(canvas.get_coordinate(2,1)).to eq("x")
   end
 
+  it "should return the most current canvas" do
+    canvas = Canvas.new("C 4 4")
+    canvas = Canvas.new("C 1 1")
+    current_canvas = Canvas.current
+    expect(current_canvas).to eq(canvas)
+  end
+
   it "should give an error if the incorrect letter is given for creating a canvas" do
     expect { Canvas.new("D 20 4") }.to raise_error("Sorry I don't recognize that command. Please try again.")
   end

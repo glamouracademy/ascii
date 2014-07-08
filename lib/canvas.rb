@@ -1,9 +1,11 @@
 require 'pry'
 
 class Canvas
+  attr_reader :x_coordinates, :y_coordinates
 
   def initialize(canvas)
     @canvas = canvas
+    @@current_canvas = self
     parse_command
     setup_grid
   end
@@ -18,15 +20,19 @@ class Canvas
       raise "Sorry I don't recognize that command. Please try again."
     end
 
-    unless @x_coordinates.integer? && @x_coordinates > 0
+    unless x_coordinates.integer? && x_coordinates > 0
       raise "Sorry only positive numbers are accepted for the x coordinate. Please try again."
     end
 
-    unless @y_coordinates.integer? && @y_coordinates > 0
+    unless y_coordinates.integer? && y_coordinates > 0
       raise "Sorry only positive numbers are accepted for the y coordinate. Please try again."
     end
 
     @canvas
+  end
+
+  def self.current
+    @@current_canvas
   end
 
   def setup_grid
@@ -34,12 +40,12 @@ class Canvas
     grid_columns = []
     grid_coordinates = []
 
-    rows = @x_coordinates + 2
+    rows = x_coordinates + 2
     rows.times do |n|
       grid_rows << n
     end
 
-    columns = @y_coordinates + 2
+    columns = y_coordinates + 2
      columns.times do |n|
       grid_columns << n
     end

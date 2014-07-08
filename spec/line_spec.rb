@@ -1,21 +1,28 @@
 require 'line'
 
 describe Line do 
-  it "should return a line command that is passed to it" do
-    line = Line.new("L 1 2 6 2")
-    expect(line.parse_command).to eq("L 1 2 6 2")
-  end
 
-  it "returns the real coordinates for a horizontal line of cells" do
-    line = Line.new("L 1 1 3 1")
-    line_coordinates_array = line.get_coordinates
-    expect(line_coordinates_array).to eq([[1,1],[2,1],[3,1]])  
-  end
+  describe "commands" do
+    before(:each) do
+      canvas = Canvas.new("C 6 6")
+    end
+    
+    it "should return a line command that is passed to it" do
+      line = Line.new("L 1 2 6 2")
+      expect(line.parse_command).to eq("L 1 2 6 2")
+    end
 
-  it "returns the real coordinates for a vertical line of cells" do
-    line = Line.new("L 1 1 1 3")
-    line_coordinates_array = line.get_coordinates
-    expect(line_coordinates_array).to eq([[1,1],[1,2],[1,3]])  
+    it "returns the real coordinates for a horizontal line of cells" do
+      line = Line.new("L 1 1 3 1")
+      line_coordinates_array = line.get_coordinates
+      expect(line_coordinates_array).to eq([[1,1],[2,1],[3,1]])  
+    end
+
+    it "returns the real coordinates for a vertical line of cells" do
+      line = Line.new("L 1 1 1 3")
+      line_coordinates_array = line.get_coordinates
+      expect(line_coordinates_array).to eq([[1,1],[1,2],[1,3]])  
+    end
   end
 
   it "returns an 'x' for one of the line coordinates" do
@@ -41,12 +48,10 @@ describe Line do
 # )
 #   end
 
-
-
-  # it "should return an error if the line coordinates are outside the canvas" do
-  #   canvas = Canvas.new("C 4 4")
-  #   expect { Line.new("L 1 1 5 1") }.to raise_error("Sorry that line won't fit on the canvas. Please try again.")
-  # end
+  it "should return an error if the line coordinates are outside the canvas" do
+    canvas = Canvas.new("C 4 4")
+    expect { Line.new("L 1 1 5 1") }.to raise_error("Sorry that line won't fit on the canvas. Please try again.")
+  end
 
 # it "should return an error if a line is requested before a canvas" do
   

@@ -6,6 +6,10 @@ class Line
   def initialize(line)
     @line = line
     parse_command
+
+    unless x1 <= Canvas.current.x_coordinates && x2 <= Canvas.current.x_coordinates && y1 <= Canvas.current.y_coordinates && y2 <= Canvas.current.y_coordinates
+      raise "Sorry that line won't fit on the canvas. Please try again."
+    end
   end
 
   def parse_command
@@ -37,8 +41,3 @@ class Line
   end    
 end
 
-# 1. figure out which real coordinates are part of the line XXX
-# 2. plot those coordinates to contain 'x' in the current canvas
-# 3. output the current convas
-
-# canvas = coordinates = [["0,0", "0,1", "0,2", "0,3", "0,4", "0,5"],["1,0"][][]]
