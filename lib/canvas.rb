@@ -8,6 +8,7 @@ class Canvas
     @@current_canvas = self
     parse_command
     setup_grid
+    plot
   end
 
   def parse_command
@@ -75,7 +76,6 @@ class Canvas
   end
 
   def output
-    #plot
     grid_output = ""
     
     num_rows = @grid_coordinates[0].size

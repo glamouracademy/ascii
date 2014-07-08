@@ -29,7 +29,7 @@ border
   it "returns the real coordinate for a cell" do
     canvas = Canvas.new("C 3 3")
     coordinate = canvas.get_coordinate(2,2)
-    expect(coordinate).to eq("4,4")  
+    expect(coordinate).to eq(" ")  
   end
 
   it "should replace the contents of a canvas coordinate with an 'x' for a line coordinate" do

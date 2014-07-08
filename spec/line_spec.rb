@@ -36,7 +36,6 @@ describe Line do
   it "should plot a horizontal line within a canvas" do
     canvas = Canvas.new("C 20 4")
     line = Line.new("L 1 2 6 2")
-    canvas.plot
     line.plot(canvas)
     plotted_line = canvas.output
     expect(plotted_line).to eq(<<gridline
