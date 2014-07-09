@@ -56,9 +56,8 @@ gridline
     end
   end
 
-
-
-#   it "should draw a rectangle when given an upper left corner and lower right corner coordinates" do
-#   end
-
+  it "should return an error if the rectangle coordinates are outside the canvas" do
+    canvas = Canvas.new("C 4 4")
+    expect { Rectangle.new("R 1 1 5 1") }.to raise_error("Sorry that rectangle won't fit on the canvas. Please try again.")
+  end
 end

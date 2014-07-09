@@ -8,6 +8,10 @@ class Rectangle < Plot
   def initialize(rectangle)
     @rectangle = rectangle
     parse_command
+
+    unless x1 <= Canvas.current.x_coordinates && x2 <= Canvas.current.x_coordinates && y1 <= Canvas.current.y_coordinates && y2 <= Canvas.current.y_coordinates
+      raise "Sorry that rectangle won't fit on the canvas. Please try again."
+    end
   end
 
   def parse_command

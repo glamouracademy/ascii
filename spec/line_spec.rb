@@ -77,14 +77,6 @@ gridline
   
 # end
 
-
-
-
-
-
-#   it "should draw fill a rectangular area when given coordinates" do
-#   end
-
 #   it "should give an error if the incorrect command is given for drawing a line" do
   
 #   end
