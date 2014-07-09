@@ -49,6 +49,22 @@ gridline
 )
   end
 
+  it "should plot a vertical line within a canvas" do
+    canvas = Canvas.new("C 20 4")
+    line = Line.new("L 6 1 6 4")
+    line.plot(canvas)
+    plotted_line = canvas.output
+    expect(plotted_line).to eq(<<gridline
+----------------------
+|     x              |
+|     x              |
+|     x              |
+|     x              |
+----------------------
+gridline
+)
+  end
+
   it "should return an error if the line coordinates are outside the canvas" do
     canvas = Canvas.new("C 4 4")
     expect { Line.new("L 1 1 5 1") }.to raise_error("Sorry that line won't fit on the canvas. Please try again.")
