@@ -2,14 +2,17 @@ require 'line'
 
 describe Line do 
 
-  describe "commands" do
+  describe "commands with canvas" do
     before(:each) do
       canvas = Canvas.new("C 6 6")
     end
     
     it "should return a line command that is passed to it" do
       line = Line.new("L 1 2 6 2")
-      expect(line.parse_command).to eq("L 1 2 6 2")
+      expect(line.x1).to eq(1)
+      expect(line.x2).to eq(6)
+      expect(line.y1).to eq(2)
+      expect(line.y2).to eq(2)
     end
 
     it "returns the real coordinates for a horizontal line of cells" do
@@ -76,12 +79,8 @@ gridline
 
 
 
-# describe Draw do
-#   it "should draw a line when given beginning and ending coordinates" do
-#   end
 
-#   it "should draw a rectangle when given an upper left corner and lower right corner coordinates" do
-#   end
+
 
 #   it "should draw fill a rectangular area when given coordinates" do
 #   end

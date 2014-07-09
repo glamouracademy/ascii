@@ -1,6 +1,7 @@
 require_relative 'canvas'
+require_relative 'plot'
 
-class Line
+class Line < Plot
   attr_reader :x1, :y1, :x2, :y2
 
   def initialize(line)
@@ -28,16 +29,8 @@ class Line
       line_coordinates_array = middle_line_x_coordinates.product([y2])
     else
       middle_line_y_coordinates = (y1..y2).to_a
-      line_coordinates_array = [x2].product(middle_line_y_coordinates) 
+      line_coordinates_array = [x2].product(middle_line_y_coordinates)
     end
-  end
-
-  def plot(canvas)
-    get_coordinates.each do |line_coordinate|
-      x = line_coordinate[0]
-      y = line_coordinate[1]
-      canvas.plot_line(x,y)
-    end
-  end    
+  end  
 end
 

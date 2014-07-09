@@ -1,5 +1,6 @@
 require_relative 'canvas'
 require_relative 'line'
+require_relative 'rectangle'
 
 puts "Welcome to ASCII fun time draw time. Please tell me your name."
 name = gets
@@ -30,5 +31,15 @@ begin
 rescue => e
   puts e.message
 end
+
+puts "Great!  Please type the coordinates for a rectangle, starting with the letter 'R' and followed by x1 y1 x2 y2."
+
+rectangle_input = gets
+rectangle_input = rectangle_input.chomp
+
+rectangle = Rectangle.new(rectangle_input)
+plot_rectangle = rectangle.plot(canvas)
+plotted_rectangle = canvas.output
+puts "Here's your rectangle!" + "\n" + plotted_rectangle
 
 

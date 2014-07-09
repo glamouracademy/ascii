@@ -3,7 +3,8 @@ require 'canvas'
 describe Canvas do
   it "should return a canvas command that is passed to it" do
     canvas = Canvas.new("C 20 4")
-    expect(canvas.parse_command).to eq("C 20 4")
+    expect(canvas.x_coordinates).to eq(20)
+    expect(canvas.y_coordinates).to eq(4)
   end
 
   it "should plot a canvas command" do
