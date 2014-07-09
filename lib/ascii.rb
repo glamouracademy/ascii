@@ -1,4 +1,5 @@
 require_relative 'canvas'
+require_relative 'line'
 
 puts "Welcome to ASCII fun time draw time. Please tell me your name."
 name = gets
@@ -10,8 +11,22 @@ canvas_input = canvas_input.chomp
 
 begin
   canvas = Canvas.new(canvas_input)
-  grid = canvas.plot
+  grid = canvas.output
   puts "Awesome!  Here's your canvas!" + "\n" + grid
+rescue => e
+  puts e.message
+end
+
+puts "Now please type the coordinates for a line, starting with the letter 'L' and followed by x1 y1 x2 y2."
+
+line_input = gets
+line_input = line_input.chomp
+
+begin
+  line = Line.new(line_input)
+  plot_line = line.plot(canvas)
+  plotted_line = canvas.output
+  puts "Here's your line!" + "\n" + plotted_line
 rescue => e
   puts e.message
 end
