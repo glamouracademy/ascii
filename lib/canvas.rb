@@ -90,8 +90,8 @@ class Canvas
     grid_output
   end
 
-  def plot_line(x,y)
-    @grid_coordinates[x][y] = "x" 
+  def plot_line(x,y,content)
+    @grid_coordinates[x][y] = content 
   end
 end
 

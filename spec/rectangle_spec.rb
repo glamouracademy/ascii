@@ -1,17 +1,17 @@
 require 'rectangle'
 
 describe Rectangle do
-  it "should return a rectangle command that is passed to it" do
-    rectangle = Rectangle.new("R 16 1 20 3")
-    expect(rectangle.x1).to eq(16)
-    expect(rectangle.y1).to eq(1)
-    expect(rectangle.x2).to eq(20)
-    expect(rectangle.y2).to eq(3)
-  end
-
   describe "commands" do
     before(:each) do
       @canvas = Canvas.new("C 20 4")
+    end
+
+    it "should return a rectangle command that is passed to it" do
+      rectangle = Rectangle.new("R 16 1 20 3")
+      expect(rectangle.x1).to eq(16)
+      expect(rectangle.y1).to eq(1)
+      expect(rectangle.x2).to eq(20)
+      expect(rectangle.y2).to eq(3)
     end
 
     it "returns the real coordinates for the top line of a rectangle" do

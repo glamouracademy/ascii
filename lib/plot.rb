@@ -3,7 +3,11 @@ class Plot
     get_coordinates.each do |line_coordinate|
       x = line_coordinate[0]
       y = line_coordinate[1]
-      canvas.plot_line(x,y)
+      canvas.plot_line(x,y,content)
     end
+  end
+
+  def content
+    "x"
   end    
 end
