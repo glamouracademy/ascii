@@ -27,11 +27,21 @@ class Fill < Plot
     left_coordinate = [x-1,y]
     fill_point = [fill_coordinate, top_coordinate, right_coordinate, bottom_coordinate, left_coordinate]
 
-    
+    fill_point.select do |coordinate|
+      x = coordinate[0]
+      y = coordinate[1]
+      Canvas.current.get_coordinate(x,y) == " " 
+    end
+
+
   end
 
   def content
     colour
   end
-
 end
+
+#take fill_point_array and check those coordinates to grid_coordinates
+#within those grid_coordinates, check what is contained
+#if nothing then fill
+#otherwise do not fill
