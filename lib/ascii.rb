@@ -10,7 +10,7 @@ begin
   command = gets
   command = command.chomp
   begin
-    case command[0]
+    case command[0].upcase
     when "C"
       canvas = Canvas.new(command)
       grid = canvas.output
