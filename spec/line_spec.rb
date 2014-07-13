@@ -72,20 +72,4 @@ gridline
     canvas = Canvas.new("C 4 4")
     expect { Line.new("L 1 1 5 1") }.to raise_error("Sorry that line won't fit on the canvas. Please try again.")
   end
-
-# it "should return an error if a line is requested before a canvas" do
-  
-# end
-
-#   it "should give an error if the incorrect command is given for drawing a line" do
-  
-#   end
-
-#   it "should give an error if the incorrect command is given for drawing a rectangle" do
-  
-#   end
-
-#   it "should give an error if the incorrect command is given for filling an area" do
-  
-#   end
 end
