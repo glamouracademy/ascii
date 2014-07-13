@@ -19,7 +19,11 @@ describe Fill do
       expect(content).to eq(true)
     end
 
-
+    it "should check if the content of a fill point is a border" do
+      fill_point = Fill.new("B 3 3 o")
+      content = fill_point.get_content([4,3])
+      expect(content).to eq (false)
+    end
 
 #     it "should plot x's for the adjacent coordinates of the given fill point" do
 #       fill_point = Fill.new("B 2 2 x")
@@ -69,22 +73,22 @@ describe Fill do
 #     end    
   end
 
-#   it "should fill an area" do
-#     canvas = Canvas.new("C 5 5")
-#     fill_point = Fill.new("B 3 3 o")
-#     fill_point.plot(canvas)
-#     plotted_fill_point = canvas.output
-#     expect(plotted_fill_point).to eq(<<gridline
-# -------
-# |ooooo|
-# |ooooo|
-# |ooooo|
-# |ooooo|
-# |ooooo|
-# -------
-# gridline
-# )
-#     end
+  it "should fill an area" do
+    canvas = Canvas.new("C 5 5")
+    fill_point = Fill.new("B 3 3 o")
+    fill_point.plot(canvas)
+    plotted_fill_point = canvas.output
+    expect(plotted_fill_point).to eq(<<gridline
+-------
+|ooooo|
+|ooooo|
+|ooooo|
+|ooooo|
+|ooooo|
+-------
+gridline
+)
+    end
 
 
   it "should return an error if the fill point is outside the canvas"

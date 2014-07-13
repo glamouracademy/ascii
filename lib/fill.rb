@@ -30,6 +30,26 @@ class Fill < Plot
     end
   end
 
+  def get_coordinates
+    target_colour = Canvas.current.get_coordinate(x,y)
+    @fill_coordinates = []
+    flood_fill(x, y, target_colour, colour)
+    @fill_coordinates
+  end
+
+  def flood_fill(x, y, target_colour, colour)
+    return if target_colour == colour
+    return if @fill_coordinates.include? [x,y]
+    fill_content = Canvas.current.get_coordinate(x,y)
+    return unless fill_content == target_colour
+      @fill_coordinates << [x,y]
+    
+    flood_fill(x-1, y, target_colour, colour)
+    flood_fill(x+1, y, target_colour, colour)
+    flood_fill(x, y-1, target_colour, colour)
+    flood_fill(x, y+1, target_colour, colour) 
+  end
+
   def content
     colour
   end

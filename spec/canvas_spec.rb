@@ -35,7 +35,7 @@ border
 
   it "should replace the contents of a canvas coordinate with an 'x' for a line coordinate" do
     canvas = Canvas.new("C 4 4")
-    canvas_coordinate = canvas.plot_line(2,1,"x")
+    canvas_coordinate = canvas.plot_content(2,1,"x")
     expect(canvas.get_coordinate(2,1)).to eq("x")
   end
 

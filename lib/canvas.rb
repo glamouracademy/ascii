@@ -8,7 +8,7 @@ class Canvas
     @@current_canvas = self
     parse_command
     setup_grid
-    plot
+    plot_border
   end
 
   def parse_command
@@ -65,7 +65,7 @@ class Canvas
     requested_coordinate = @grid_coordinates[x][y]
   end
 
-  def plot
+  def plot_border
     @grid_coordinates.each { |a| a.fill " "}
     @grid_coordinates[0].fill("|")
     @grid_coordinates[-1].fill("|")
@@ -90,7 +90,7 @@ class Canvas
     grid_output
   end
 
-  def plot_line(x,y,content)
+  def plot_content(x,y,content)
     @grid_coordinates[x][y] = content 
   end
 end
